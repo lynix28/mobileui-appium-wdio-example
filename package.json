@@ -1,0 +1,27 @@
+{
+  "name": "android-mobileui-appium-wdio-example",
+  "version": "1.0.0",
+  "description": "Android Mobile UI Automation Test Example Project with Appium + WebdriverIO",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "wdio ./wdio.conf.js",
+    "report": "allure open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wdio/allure-reporter": "^8.10.4",
+    "@wdio/appium-service": "^8.10.4",
+    "@wdio/cli": "^8.10.4",
+    "@wdio/local-runner": "^8.10.4",
+    "@wdio/mocha-framework": "^8.10.4",
+    "allure-commandline": "^2.22.0"
+  },
+  "devDependencies": {
+    "appium": "^1.22.3"
+  }
+}

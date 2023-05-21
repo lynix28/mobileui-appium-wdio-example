@@ -1,0 +1,8 @@
+./node_modules/
+./reports/
+./report/
+node_modules
+reports
+report
+allure-report
+package-lock.json
