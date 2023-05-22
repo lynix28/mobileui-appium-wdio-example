@@ -11,6 +11,7 @@ Node Module:
 - WebdriverIO
 - Mocha (for Test Framework)
 - Allure (for Test Reporting)
+- Chai (for Assessment)
 
 Setup with `package.json`:
 - `npm install`
@@ -23,6 +24,7 @@ Setup manually:
 - `npm install @wdio/appium-service`
 - `npm install @wdio/mocha-framework`
 - `npm install @wdio/allure-reporter`
+- `npm install chai`
 - `npm install --save-dev appium`
 
 To compile the test result
@@ -30,3 +32,11 @@ To compile the test result
 - `./node_modules/.bin/allure generate [allure_output_dir] && ./node_modules/.bin/allure open` (edit the 'allure_output_dir' with your directory)
 
 or follow this instruction to make it automatically -> https://webdriver.io/docs/allure-reporter#autogenerate-report
+
+To run the test
+- `npm run test` | Run all tests
+- `npm run test -- --suite SuiteName` | Run a specific Test Suite Bundle (need to define it inside 'wdio.conf.js')
+- `npm run test -- --spec ./path/to/file/FileName` | Run a specific Test Case / Suite (need to define it inside 'wdio.conf.js')
+
+To check the report
+- `npm run report`

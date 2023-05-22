@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+let { join } = require('path');
 const allure = require('allure-commandline');
 
 exports.config = {
@@ -28,8 +29,22 @@ exports.config = {
 	//
 	specs: [
 		// ToDo: define location for spec files here
-		'./tests/**/*.js'
+		[ // example to run it sequentially
+			'./tests/TS-*.js'
+		],
 	],
+	suites: {
+		smokeTest: [ // example to run it as a Test Suite
+			[
+				'./tests/TS-001-Open-App.js',
+			]
+		],
+		sanityTest: [
+			[
+				'./tests/TS-002-MainMenu.js'
+			]
+		]
+	},
 	// Patterns to exclude.
 	exclude: [
 		// 'path/to/excluded/files'
@@ -60,10 +75,12 @@ exports.config = {
 		// capabilities for local Appium web tests on an Android Emulator
 		platformName: 'Android', // or "iOS"
 		// browserName: 'Chrome', // or "Safari"
-		'appium:deviceName': 'Pixel 3A', // or "iPhone Simulator"
+		'appium:deviceName': 'Pixel 3A',
+		'appium:udid': 'emulator-5554', // or "iPhone Simulator"
 		// 'appium:platformVersion': '12.0', // or "16.2" (for running iOS v16)
 		'appium:automationName': 'UiAutomator2', // or "XCUITest"
-		'appium:app': './demo.apk'
+		'appium:app': join(process.cwd(), './demo.apk'),
+		'appium:fullReset': true
 	}],
 	//
 	// ===================
@@ -112,7 +129,7 @@ exports.config = {
 	// Services take over a specific job you don't want to take care of. They enhance
 	// your test setup with almost no effort. Unlike plugins, they don't add new
 	// commands. Instead, they hook themselves up into the test process.
-	services: ['appium'],
+	// services: ['appium'],
     
 	// Framework you want to run your specs with.
 	// The following are supported: Mocha, Jasmine, and Cucumber
