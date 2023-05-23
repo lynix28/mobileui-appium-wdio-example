@@ -12,9 +12,9 @@ const sauceLabsCapabilities = {
 	'appium:automationName': 'UiAutomator2',
 	'sauce:options': {
 		appiumVersion: '2.0.0-beta56',
-		build: process.env.BUILD,
+		build: `v1.${process.env.BUILD}`,
 		name: process.env.BUILDNAME,
-		public: 'public'
+		public: 'public' // job visibility; public | team | private
 	},
 };
 
