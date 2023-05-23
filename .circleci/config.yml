@@ -2,15 +2,14 @@ version: 2.1
 jobs:
   Testing:
     docker:
-      - image: alpine:latest
+      - image: cimg/node:20.2.0
     steps:
       - checkout
       - run:
-          name: "Install Java & Node"
+          name: "Install Java"
           command: |
-            apk --no-cache add openjdk11 nodejs npm
+            apt install default-jre
             java --version
-            node --version
       - run:
           name: "Setup Environment Variable"
           command: |
