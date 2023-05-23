@@ -18,6 +18,7 @@ jobs:
             echo "SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY" >> .env
             echo "BUILD=$CIRCLE_BUILD_NUM" >> .env
             echo "BUILDNAME=Testing" >> .env
+            echo "$CIRCLE_BUILD_NUM"
       - run:
           name: "Install Dependencies"
           command: npm install
