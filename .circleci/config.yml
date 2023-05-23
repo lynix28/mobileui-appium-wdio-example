@@ -16,7 +16,7 @@ jobs:
           command: |
             echo "SAUCE_USERNAME=$SAUCE_USERNAME" > .env
             echo "SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY" >> .env
-            echo "BUILD=v1.0.0" >> .env
+            echo "BUILD=$CIRCLE_BUILD_NUM" >> .env
             echo "BUILDNAME=Testing" >> .env
       - run:
           name: "Install Dependencies"
