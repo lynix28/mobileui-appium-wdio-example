@@ -1,6 +1,6 @@
 # Android MobileUI Automation Test Project Example with Appium & WebdriverIO
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/lynix28/android-mobileui-appium-wdio-example/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/lynix28/android-mobileui-appium-wdio-example/tree/master)
-[![Sauce Test Status](https://app.saucelabs.com/buildstatus/oauth-lynixizunia-7ba4e)](https://app.saucelabs.com/u/oauth-lynixizunia-7ba4e)
+[![Sauce Test Status](https://app.saucelabs.com/buildstatus/oauth-lynixizunia-7ba4e?auth=4a3b6b6e6d398d09897ca405bfb1f297)](https://app.saucelabs.com/buildstatus/oauth-lynixizunia-7ba4e?auth=4a3b6b6e6d398d09897ca405bfb1f297)
 
 Requirement:
 - NodeJS
