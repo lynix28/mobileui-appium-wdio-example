@@ -21,7 +21,7 @@ jobs:
           command: npm install
       - run:
           name: "Running Test"
-          command: npm run cloud -- --suite "negativeCase"
+          command: npm run cloud -- --suite "negativeTest"
       - run:
           name: "Wrapping Test Result"
           command: "tar -cvf artifact.tar ./allure-report/"
