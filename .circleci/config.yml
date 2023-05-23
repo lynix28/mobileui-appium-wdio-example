@@ -9,6 +9,8 @@ jobs:
           name: "Install Java & Node"
           command: |
             apk --no-cache add openjdk11 nodejs npm
+            java --version
+            node --version
       - run:
           name: "Setup Environment Variable"
           command: |
