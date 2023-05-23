@@ -2,9 +2,13 @@ version: 2.1
 jobs:
   Testing:
     docker:
-      - image: cimg/node:20.2.0
+      - image: alpine:latest
     steps:
       - checkout
+      - run:
+          name: "Install Java & Node"
+          command: |
+            apk --no-cache add openjdk11 nodejs npm
       - run:
           name: "Setup Environment Variable"
           command: |
@@ -17,15 +21,13 @@ jobs:
           command: npm install
       - run:
           name: "Running Test"
-          command: npm run cloud
+          command: npm run cloud -- --suite "negativeCase"
       - run:
           name: "Wrapping Test Result"
           command: "tar -cvf artifact.tar ./allure-report/"
       - store_artifacts:
           path: artifact.tar
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
+          
 workflows:
   Test-Workflow:
     jobs:
