@@ -14,7 +14,8 @@ const sauceLabsCapabilities = {
 		appiumVersion: '2.0.0-beta56',
 		build: `v1.${process.env.BUILD}`,
 		name: process.env.BUILDNAME,
-		public: 'public' // job visibility; public | team | private
+		public: 'public', // job visibility; public | team | private
+  passed: true
 	},
 };
 
