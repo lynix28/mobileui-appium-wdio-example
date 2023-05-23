@@ -12,6 +12,8 @@ Node Module:
 - Mocha (for Test Framework)
 - Allure (for Test Reporting)
 - Chai (for Assessment)
+- Sauce Labs (for Test on Cloud)
+- Dotenv
 
 Setup with `package.json`:
 - `npm install`
@@ -22,8 +24,10 @@ Setup manually:
 - `./node_modules/.bin/wdio config` -> for quick setup or continue to install the following module below.
 - `npm install @wdio/local-runner`
 - `npm install @wdio/appium-service`
+- `npm install @wdio/sauce-service`
 - `npm install @wdio/mocha-framework`
 - `npm install @wdio/allure-reporter`
+- `npm install dotenv`
 - `npm install chai`
 - `npm install --save-dev appium`
 

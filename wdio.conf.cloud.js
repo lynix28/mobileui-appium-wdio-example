@@ -1,15 +1,20 @@
 /* eslint-disable no-console */
-let { join } = require('path');
+require('dotenv').config();
 const allure = require('allure-commandline');
 const list = require('./test-suite-list.js');
 
-const localCapabilities = {
-	platformName: 'Android', // or "iOS"
-	'appium:deviceName': 'Pixel 3A',
-	'appium:udid': 'emulator-5554', // or "iPhone Simulator"
-	'appium:automationName': 'UiAutomator2', // or "XCUITest"
-	'appium:app': join(process.cwd(), './demo.apk'),
-	'appium:fullReset': true
+const sauceLabsCapabilities = {
+	platformName: 'Android',
+	'appium:app': 'storage:filename=demo.apk', // The filename of the mobile app
+	'appium:deviceName': 'Android GoogleAPI Emulator',
+	'appium:deviceOrientation': 'portrait',
+	'appium:platformVersion': '13.0',
+	'appium:automationName': 'UiAutomator2',
+	'sauce:options': {
+		appiumVersion: '2.0.0-beta56',
+		build: process.env.BUILD,
+		name: process.env.BUILDNAME,
+	},
 };
 
 exports.config = {
@@ -20,7 +25,7 @@ exports.config = {
 	// WebdriverIO supports running e2e tests as well as unit and component tests.
 	runner: 'local',
     
-	port: 4723,
+	port: 443,
 	//
 	// ==================
 	// Specify Test Files
@@ -72,7 +77,7 @@ exports.config = {
 	//
 	capabilities: [
 		// capabilities for local Appium web tests on an Android Emulator
-		localCapabilities
+		sauceLabsCapabilities
 	],
 	//
 	// ===================
@@ -105,7 +110,7 @@ exports.config = {
 	// with `/`, the base url gets prepended, not including the path portion of your baseUrl.
 	// If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
 	// gets prepended directly.
-	baseUrl: '',
+	baseUrl: '/wd/hub',
 	//
 	// Default timeout for all waitFor* commands.
 	waitforTimeout: 10000,
@@ -121,7 +126,15 @@ exports.config = {
 	// Services take over a specific job you don't want to take care of. They enhance
 	// your test setup with almost no effort. Unlike plugins, they don't add new
 	// commands. Instead, they hook themselves up into the test process.
-	services: ['appium'],
+	user: process.env.SAUCE_USERNAME,
+	key: process.env.SAUCE_ACCESS_KEY,
+	region: 'us',
+	services: [
+		['sauce', {
+			sauceConnect: true
+		}]
+	],
+	// services: ['appium'],
     
 	// Framework you want to run your specs with.
 	// The following are supported: Mocha, Jasmine, and Cucumber
