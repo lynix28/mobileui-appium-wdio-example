@@ -1,7 +1,9 @@
 const attribute = {
 	catalogText: 'Catalog',
 	webviewText: 'Webview',
-	aboutText: 'About'
+	aboutText: 'About',
+	loginText: 'Log In',
+	logoutText: 'Log Out'
 };
 
 module.exports = { attribute };

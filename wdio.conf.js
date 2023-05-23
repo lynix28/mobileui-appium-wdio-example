@@ -41,7 +41,9 @@ exports.config = {
 		],
 		sanityTest: [
 			[
-				'./tests/TS-002-MainMenu.js'
+				'./tests/TS-002-MainMenu.js',
+				'./tests/TS-003-SideMenu.js',
+				'./tests/TS-004-Webview.js'
 			]
 		]
 	},

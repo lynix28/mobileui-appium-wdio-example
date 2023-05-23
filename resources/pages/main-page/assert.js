@@ -1,5 +1,6 @@
 const attribute = {
-	pageTitleText: 'Products'
+	pageTitleText: 'Products',
+	sortDescText: 'Name - Descending'
 };
 
 module.exports = { attribute };
