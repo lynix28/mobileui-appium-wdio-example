@@ -2,15 +2,16 @@ version: 2.1
 jobs:
   Testing:
     docker:
-      - image: cimg/node:20.2.0
+      - image: pridecontrol/wdio:1.0.0
+        auth:
+          username: $USERNAME
+          password: $PASSWORD
     steps:
       - checkout
       - run:
-          name: "Install Java"
+          name: "Prepare Test"
           command: |
-            sudo apt update
-            sudo apt install default-jre
-            java --version
+            cp -r . /app/
       - run:
           name: "Setup Environment Variable"
           command: |
@@ -24,10 +25,10 @@ jobs:
           command: npm install
       - run:
           name: "Running Test"
-          command: npm run cloud
+          command: npm run cloud -- --suite "smokeTest"
       - run:
           name: "Wrapping Test Result"
-          command: "tar -cvf artifact.tar ./allure-report/"
+          command: "tar -cvf artifact.tar ./app/allure-report/"
       - store_artifacts:
           path: artifact.tar
           
