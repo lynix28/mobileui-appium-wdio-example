@@ -9,10 +9,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Prepare Test"
-          command: |
-            cp -r . /app/
-      - run:
           name: "Setup Environment Variable"
           command: |
             echo "SAUCE_USERNAME=$SAUCE_USERNAME" > .env
@@ -20,6 +16,10 @@ jobs:
             echo "BUILD=$CIRCLE_BUILD_NUM" >> .env
             echo "BUILDNAME=Testing" >> .env
             echo "$CIRCLE_BUILD_NUM"
+      - run:
+          name: "Prepare Test"
+          command: |
+            cp -r . /app/
       - run:
           name: "Running Test"
           command: |
@@ -29,7 +29,7 @@ jobs:
           name: "Wrapping Test Result"
           command: |
             cd /app/
-            "tar -cvf artifact.tar ./allure-report/"
+            tar -cvf artifact.tar ./allure-report/
       - store_artifacts:
           path: artifact.tar
           
