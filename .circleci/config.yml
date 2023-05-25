@@ -22,10 +22,12 @@ jobs:
             echo "$CIRCLE_BUILD_NUM"
       - run:
           name: "Running Test"
-          command: npm run cloud -- --suite "smokeTest"
+          command: |
+            cd /app/
+            npm run cloud -- --suite "smokeTest"
       - run:
           name: "Wrapping Test Result"
-          command: "tar -cvf artifact.tar ./allure-report/"
+          command: "tar -cvf artifact.tar ./app/allure-report/"
       - store_artifacts:
           path: artifact.tar
           
