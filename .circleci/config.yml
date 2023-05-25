@@ -27,7 +27,7 @@ jobs:
             npm run cloud -- --suite "smokeTest"
       - run:
           name: "Wrapping Test Result"
-          command: "tar -cvf artifact.tar ./app/allure-report/"
+          command: "tar -cvf artifact.tar ./allure-report/"
       - store_artifacts:
           path: artifact.tar
           
