@@ -24,12 +24,11 @@ jobs:
           name: "Running Test"
           command: |
             cd /app/
-            npm run cloud -- --suite "smokeTest"
+            npm run cloud
       - run:
           name: "Wrapping Test Result"
           command: |
-            cd /app/
-            tar -cvf artifact.tar ./allure-report/
+            tar -cvf artifact.tar /app/allure-report/
       - store_artifacts:
           path: artifact.tar
           
