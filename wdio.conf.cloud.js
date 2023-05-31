@@ -12,7 +12,7 @@ const sauceLabsCapabilities = {
 	'appium:automationName': 'UiAutomator2',
 	'sauce:options': {
 		appiumVersion: '2.0.0-beta56',
-		build: `v1.${process.env.BUILD}`,
+		build: `android.v1.${process.env.BUILD}`,
 		name: process.env.BUILDNAME,
 		public: 'public', // job visibility; public | team | private
 		passed: true
@@ -161,8 +161,8 @@ exports.config = {
 	reporters: [
 		['allure', {
 			outputDir: 'reports',
-			disableWebdriverStepsReporting: true,
-			disableWebdriverScreenshotsReporting: true,
+			// disableWebdriverStepsReporting: true,
+			// disableWebdriverScreenshotsReporting: true,
 		}]
 	],
 	//
