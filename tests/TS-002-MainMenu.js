@@ -1,9 +1,13 @@
-const expect = require('chai').expect; 
+const expect = require('chai').expect;
+const allureReporter = require('@wdio/allure-reporter').default;
 const mainMenu = require('../resources/pages/main-page/selector.js');
 const assert = require('../resources/pages/main-page/assert.js');
 
 describe('TS-002 | Main Menu', function() {
 	it('TC-001 | Check all content is loaded', async function() {
+		allureReporter.addTag('Sanity Test');
+		allureReporter.addSeverity('normal');
+
 		let displayed = 0;
 
 		if (await mainMenu.appLogo.waitForExist({ timeout: 30000 }) == true) displayed = displayed + 1;
@@ -17,6 +21,9 @@ describe('TS-002 | Main Menu', function() {
 	});
 
 	it('TC-002 | The page is scrollable', async function() {
+		allureReporter.addTag('Sanity Test');
+		allureReporter.addSeverity('normal');
+
 		await mainMenu.scrollView.touchAction([
 			{ action: 'press', x: 520, y: 1200 },
 			{ action: 'moveTo', x: 535, y: 226 },
@@ -31,6 +38,9 @@ describe('TS-002 | Main Menu', function() {
 	});
 
 	it('TC-003 | Check sort function is work', async function() {
+		allureReporter.addTag('Sanity Test');
+		allureReporter.addSeverity('normal');
+		
 		await mainMenu.sortButton.touchAction('tap');
 		await mainMenu.sortDescBtn.waitForExist({ timeout: 30000 });
 		

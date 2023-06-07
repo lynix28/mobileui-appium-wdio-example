@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const allureReporter = require('@wdio/allure-reporter').default;
 const mainMenu = require('../resources/pages/main-page/selector');
 const sideMenu = require('../resources/pages/sidemenu/selector.js');
 const webview = require('../resources/pages/webview/selector.js');
@@ -7,6 +8,9 @@ const variable = require('../resources/shared/variable.js');
 
 describe('TS-004 | Webview', function() {
 	it('TC-001 | Check all content is loaded', async function() {
+		allureReporter.addTag('Sanity Test');
+		allureReporter.addSeverity('normal');
+
 		await mainMenu.sideMenu.waitForExist({ timeout: 30000 });
 		await mainMenu.sideMenu.touchAction('tap');
 
@@ -27,6 +31,9 @@ describe('TS-004 | Webview', function() {
 	});
 
 	it('TC-002 | Access "Google Site"', async function() {
+		allureReporter.addTag('Sanity Test');
+		allureReporter.addSeverity('normal');
+
 		await webview.urlInputField.waitForExist({ timeout: 30000 });
 		await webview.urlInputField.addValue(variable.data.webviewUrl);
 		

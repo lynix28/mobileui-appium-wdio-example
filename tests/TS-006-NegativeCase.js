@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const allureReporter = require('@wdio/allure-reporter').default;
 const mainMenu = require('../resources/pages/main-page/selector');
 const sideMenu = require('../resources/pages/sidemenu/selector.js');
 const login = require('../resources/pages/login/selector.js');
@@ -7,6 +8,9 @@ const variable = require('../resources/shared/variable.js');
 
 describe('TS-006 | Negative Case', function() {
 	it('TC-001 | Failed Login - Invalid Credential', async function() {
+		allureReporter.addTag('Negative Test');
+		allureReporter.addSeverity('normal');
+
 		await mainMenu.sideMenu.waitForExist({ timeout: 30000 });
 		await mainMenu.sideMenu.touchAction('tap');
 
@@ -30,6 +34,9 @@ describe('TS-006 | Negative Case', function() {
 	});
 
 	it('TC-002 | Failed Login - Locked User', async function() {
+		allureReporter.addTag('Negative Test');
+		allureReporter.addSeverity('normal');
+
 		await mainMenu.sideMenu.waitForExist({ timeout: 30000 });
 		await mainMenu.sideMenu.touchAction('tap');
 

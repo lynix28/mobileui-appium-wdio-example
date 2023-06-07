@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   Testing:
     docker:
-      - image: pridecontrol/wdio:1.0.0
+      - image: pridecontrol/wdio:1.1.0
         auth:
           username: $USERNAME
           password: $PASSWORD
