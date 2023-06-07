@@ -15,7 +15,7 @@ const sauceLabsCapabilities = {
 		build: `android.v1.${process.env.BUILD}`,
 		name: process.env.BUILDNAME,
 		public: 'public', // job visibility; public | team | private
-		passed: true
+		// passed: true
 	},
 };
 
