@@ -27,6 +27,7 @@ jobs:
           name: "Send Notification - Start Testing"
           command: |
             cd /app/
+            npm install @penseapp/discord-notification
             npm install run-func
             npx run-func discord-notification.js test "start"
       - run:
