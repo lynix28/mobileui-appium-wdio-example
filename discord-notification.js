@@ -24,20 +24,20 @@ function test(state) {
 		discordNotification
 			.infoMessage()
 			.addTitle('Testing Start')
-			.addDescription(`from ${process.env.REPOSITORY_URL} | Branch: ${process.env.BRANCH}`)
+			.addDescription(`from ${process.env.REPOSITORY_URL}`)
 			.addField({name: 'Branch', value: process.env.BRANCH, inline: false }) //breakline
 			.addField({name: 'Build URL', value: process.env.BUILD_URL, inline: false })
-			.addField({name: 'Build Number', value: `v.1.${process.env.BUILD}` }) 
+			.addField({name: 'Build Number', value: `android.v.1.${process.env.BUILD}` }) 
 			.addFooter(`Test start on ${getCurrentTimestamp()}`)
 			.sendMessage();
 	} else if (state == 'stop') {
 		discordNotification
 			.infoMessage()
 			.addTitle('Testing Complete')
-			.addDescription(`from ${process.env.REPOSITORY_URL} | Branch: ${process.env.BRANCH}`)
+			.addDescription(`from ${process.env.REPOSITORY_URL}`)
 			.addField({name: 'Branch', value: process.env.BRANCH, inline: false }) //breakline
 			.addField({name: 'Build URL', value: process.env.BUILD_URL, inline: false })
-			.addField({name: 'Build Number', value: `v.1.${process.env.BUILD}` }) 
+			.addField({name: 'Build Number', value: `android.v.1.${process.env.BUILD}` }) 
 			.addFooter(`Test is completed on ${getCurrentTimestamp()}`)
 			.sendMessage();
 	} else {
