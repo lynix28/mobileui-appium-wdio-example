@@ -44,6 +44,7 @@ jobs:
           name: "Wrapping Test Result"
           command: |
             tar -cvf artifact.tar /app/allure-report/
+          when: always
       - store_artifacts:
           path: artifact.tar
           
