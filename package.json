@@ -20,6 +20,7 @@
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
+    "@penseapp/discord-notification": "^2.0.9",
     "@wdio/allure-reporter": "^8.10.4",
     "@wdio/appium-service": "^8.10.5",
     "@wdio/local-runner": "^8.10.5",
