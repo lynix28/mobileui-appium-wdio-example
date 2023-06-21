@@ -9,7 +9,7 @@ CMD [ "/bin/bash" ]
 RUN apt-get update && \
     apt-get -y install curl tzdata
 
-RUN TZ="Asia/Jakarta"
+ENV TZ="Asia/Jakarta"
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get update && \
