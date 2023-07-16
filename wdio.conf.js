@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 let { join } = require('path');
 const allure = require('allure-commandline');
-const list = require('./test-suite-list.js');
+const list = require('./test.suite.list.js');
 
 const localCapabilities = {
 	platformName: 'Android', // or "iOS"

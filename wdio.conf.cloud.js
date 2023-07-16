@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 const allure = require('allure-commandline');
-const list = require('./test-suite-list.js');
+const list = require('./test.suite.list.js');
 
 const sauceLabsCapabilities = {
 	platformName: 'Android',
