@@ -21,22 +21,10 @@ jobs:
           command: |
             cp -r . /app/
       - run:
-          name: "Send Notification - Start Testing"
-          command: |
-            cd /app/
-            npm install @penseapp/discord-notification
-            npm install run-func
-            npx run-func discord-notification.js test "start"
-      - run:
           name: "Running Test"
           command: |
             cd /app/
             npm run cloud
-      - run:
-          name: "Send Notification - Stop Testing"
-          command: |
-            cd /app/
-            npx run-func discord-notification.js test "stop"
       - run:
           name: "Wrapping Test Result"
           command: |
