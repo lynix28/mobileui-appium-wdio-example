@@ -40,7 +40,7 @@ exports.config = {
 	specs: [
 		// ToDo: define location for spec files here
 		[ // example to run it sequentially
-			'./tests/TS-*.js'
+			'../tests/TS-*.js'
 		],
 	],
 	suites: list.testSuite,
