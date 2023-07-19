@@ -87,6 +87,7 @@ exports.config = {
 	//
 	// Level of logging verbosity: trace | debug | info | warn | error | silent
 	logLevel: 'info',
+	outputDir: './logs',
 	//
 	// Set specific log levels per logger
 	// loggers:
