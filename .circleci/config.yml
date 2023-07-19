@@ -29,8 +29,8 @@ jobs:
           name: "Wrapping Test Result"
           command: |
             mkdir test_artifact
-            tar -cvf ./test_artifact/artifact_1.tar ./allure-report
-            tar -cvf ./test_artifact/artifact_2.tar ./logs
+            tar -cvf ./test_artifact/artifact_1.tar /app/allure-report
+            tar -cvf ./test_artifact/artifact_2.tar /app/logs
           when: always
       - store_artifacts:
           path: test_artifact
