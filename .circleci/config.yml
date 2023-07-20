@@ -28,10 +28,12 @@ jobs:
       - run:
           name: "Wrapping Test Result"
           command: |
-            tar -cvf artifact.tar /app/allure-report/
+            mkdir test_artifact
+            tar -cvf ./test_artifact/artifact_1.tar /app/allure-report
+            tar -cvf ./test_artifact/artifact_2.tar /app/logs
           when: always
       - store_artifacts:
-          path: artifact.tar
+          path: test_artifact
 
   Start-Testing-Notification:
     docker:

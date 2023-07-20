@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const allureReporter = require('@wdio/allure-reporter').default;
-const mainMenu = require('../resources/pages/main-page/selector.js');
+const mainMenu = require('../resources/pages/main-page/action.js');
 const variable = require('../resources/shared/variable.js');
 
 describe('TS-001 | Smoke Test', function() {
@@ -8,8 +8,7 @@ describe('TS-001 | Smoke Test', function() {
 		allureReporter.addTag('Smoke Test');
 		allureReporter.addSeverity('critical');
 
-		await mainMenu.appLogo.waitForExist({ timeout: 30000 });
-		const appPackage = await mainMenu.appLogo.getCurrentPackage();
-		expect(appPackage).equal(variable.data.appPackage, appPackage);
+		const response = await mainMenu.checkPackage();
+		expect(response).equal(variable.data.appPackage, response);
 	});
 });

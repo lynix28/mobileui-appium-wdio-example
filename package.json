@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "wdio run ./wdio.conf.js",
-    "cloud": "wdio run ./wdio.conf.cloud.js",
+    "test": "wdio run ./config/wdio.conf.js",
+    "cloud": "wdio run ./config/wdio.conf.cloud.js",
     "report": "allure open"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "@penseapp/discord-notification": "^2.0.9",
     "@wdio/allure-reporter": "^8.10.4",
     "@wdio/appium-service": "^8.10.5",
+    "@wdio/globals": "^8.13.4",
     "@wdio/local-runner": "^8.10.5",
     "@wdio/mocha-framework": "^8.10.4",
     "@wdio/sauce-service": "^8.10.5",
