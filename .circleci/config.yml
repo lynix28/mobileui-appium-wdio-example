@@ -122,7 +122,7 @@ workflows:
             - Start-Testing-Notification
       - Testing-BDD:
           requires:
-            - Start-Testing-Notification
+            - Testing
       - Stop-Testing-Notification:
           requires:
             - Testing

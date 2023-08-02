@@ -10,6 +10,8 @@ const sauceLabsCapabilities = {
 	'appium:deviceOrientation': 'portrait',
 	'appium:platformVersion': '13.0',
 	'appium:automationName': 'UiAutomator2',
+	'appium:autoLaunch': false,
+	'appium:fullReset': true,
 	'sauce:options': {
 		appiumVersion: '2.0.0-beta66',
 		build: `android.v1.${process.env.BUILD}`,
