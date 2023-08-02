@@ -34,6 +34,43 @@ jobs:
           when: always
       - store_artifacts:
           path: test_artifact
+  
+  Testing-BDD:
+    docker:
+      - image: pridecontrol/wdio:1.1.0
+        auth:
+          username: $USERNAME
+          password: $PASSWORD
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variable"
+          command: |
+            echo "SAUCE_USERNAME=$SAUCE_USERNAME" > .env
+            echo "SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY" >> .env
+            echo "BUILD=<< pipeline.number >>" >> .env
+            echo "BUILDNAME=Testing" >> .env
+            echo "$CIRCLE_BUILD_NUM"
+      - run:
+          name: "Prepare Test"
+          command: |
+            cp -r . /app/
+            cd /app/
+            npm install --save-dev @wdio/cucumber-framework
+      - run:
+          name: "Running Test"
+          command: |
+            cd /app/
+            npm run cloud-bdd
+      - run:
+          name: "Wrapping Test Result"
+          command: |
+            mkdir test_artifact
+            tar -cvf ./test_artifact/artifact_1.tar /app/allure-report
+            tar -cvf ./test_artifact/artifact_2.tar /app/logs
+          when: always
+      - store_artifacts:
+          path: test_artifact
 
   Start-Testing-Notification:
     docker:
@@ -83,6 +120,10 @@ workflows:
       - Testing:
           requires:
             - Start-Testing-Notification
+      - Testing-BDD:
+          requires:
+            - Start-Testing-Notification
       - Stop-Testing-Notification:
           requires:
             - Testing
+            - Testing-BDD
