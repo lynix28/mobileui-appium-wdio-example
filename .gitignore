@@ -5,7 +5,7 @@ node_modules
 reports
 report
 allure-report
-package-lock.json
 .env
 logs
 .DS_Store
+bugreport*

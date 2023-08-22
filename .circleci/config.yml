@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  Testing:
+  Testing-Android:
     docker:
       - image: pridecontrol/wdio:1.1.0
         auth:
@@ -24,7 +24,7 @@ jobs:
           name: "Running Test"
           command: |
             cd /app/
-            npm run cloud
+            npm run test-android-ci
       - run:
           name: "Wrapping Test Result"
           command: |
@@ -35,7 +35,7 @@ jobs:
       - store_artifacts:
           path: test_artifact
   
-  Testing-BDD:
+  Testing-Android-Cucumber:
     docker:
       - image: pridecontrol/wdio:1.1.0
         auth:
@@ -61,7 +61,7 @@ jobs:
           name: "Running Test"
           command: |
             cd /app/
-            npm run cloud-bdd
+            npm run test-android-bdd-ci
       - run:
           name: "Wrapping Test Result"
           command: |
@@ -72,6 +72,41 @@ jobs:
       - store_artifacts:
           path: test_artifact
 
+  Testing-Ios:
+    docker:
+      - image: pridecontrol/wdio:1.1.0
+        auth:
+          username: $USERNAME
+          password: $PASSWORD
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variable"
+          command: |
+            echo "SAUCE_USERNAME=$SAUCE_USERNAME" > .env
+            echo "SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY" >> .env
+            echo "BUILD=<< pipeline.number >>" >> .env
+            echo "BUILDNAME=Testing" >> .env
+            echo "$CIRCLE_BUILD_NUM"
+      - run:
+          name: "Prepare Test"
+          command: |
+            cp -r . /app/
+      - run:
+          name: "Running Test"
+          command: |
+            cd /app/
+            npm run test-ios-ci
+      - run:
+          name: "Wrapping Test Result"
+          command: |
+            mkdir test_artifact
+            tar -cvf ./test_artifact/artifact_1.tar /app/allure-report
+            tar -cvf ./test_artifact/artifact_2.tar /app/logs
+          when: always
+      - store_artifacts:
+          path: test_artifact
+  
   Start-Testing-Notification:
     docker:
       - image: cimg/node:18.16.0
@@ -117,13 +152,15 @@ workflows:
   Test-Workflow:
     jobs:
       - Start-Testing-Notification
-      - Testing:
+      - Testing-Android:
           requires:
             - Start-Testing-Notification
-      - Testing-BDD:
+      - Testing-Android-Cucumber:
           requires:
-            - Testing
+            - Testing-Android
+      - Testing-Ios:
+          requires:
+            - Testing-Android-Cucumber
       - Stop-Testing-Notification:
           requires:
-            - Testing
-            - Testing-BDD
+            - Testing-Ios

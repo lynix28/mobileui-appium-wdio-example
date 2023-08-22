@@ -1,7 +1,7 @@
 require('dotenv').config();
 const DiscordNotification = require('@penseapp/discord-notification');
 
-const discordNotification = new DiscordNotification.DiscordNotification('Android MobileUI', process.env.DISCORD_WEBHOOK);
+const discordNotification = new DiscordNotification.DiscordNotification('MobileUI', process.env.DISCORD_WEBHOOK);
 
 function getCurrentTimestamp() {
 	const options = {
